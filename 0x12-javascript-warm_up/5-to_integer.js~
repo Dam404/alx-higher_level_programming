@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+const myVar = process.argv.slice(2)
+
+if (myVar.length === 0){
+    console.log("Not a number");
+}
+else{
+    const num = parseInt.(myVar[0], 10);
+
+    if (isNaN(num)){
+	console.log("Not a Number");
+    }
+    else{
+	console.log(`My number: ${num}`);
+    }
+}
