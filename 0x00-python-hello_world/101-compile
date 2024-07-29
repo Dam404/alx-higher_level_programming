@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+if [ -z "$PYFILE" ]; then
+echo "PYFILE environment variable is not set"
+exit 1
+
+fi
+
+#Extratction of the filename extenstion and the direction name
+
+file_name=$(basename "$PYFILE")
+dir_name=$(dirname "$PYFILE")
+compiled_file="${file_name}c"
+
+#Compile the python file
+echo 'Compiling $PYFILE ....'
+python3 -m py_compile "$PYFILE"
+
+#NOW, MOVE THE COMPILED FILE TO THE CURRENT DIRECTORY WITH THE CORRECT NAME
+mv "$dir_name/__pycache__/${file_name%.py}".cpython-*.pyc "$dir_name/$compiled_file"
